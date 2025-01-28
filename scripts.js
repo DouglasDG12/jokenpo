@@ -5,13 +5,19 @@ const pontosDaMaquina = document.querySelector(".result-maquina")
 let myResult = 0
 let resultMaquina = 0 
 
+const GAME_OPTIONS = {
+    PEDRA: 'pedra',
+    PAPEL: 'papel',
+    TESOURA: 'tesoura'
+}
+
 function player(humano) {
 
     resultado(humano, maquina())
 }
 
 function maquina() {
-    const choices = ['pedra', 'papel', 'tesoura']
+    const choices = [GAME_OPTIONS.PEDRA, GAME_OPTIONS.PAPEL, GAME_OPTIONS.TESOURA]
     const escolhas = Math.floor(Math.random() * 3)
 
     return choices[escolhas]
@@ -23,9 +29,9 @@ function resultado(human, maquina) {
     if (human === maquina) {
         result.innerHTML = 'EMPATE!!!'
     } 
-    else if (human === 'pedra' && maquina === 'tesoura' ||
-        human === 'papel' && maquina === 'pedra' ||
-        human === 'tesoura' && maquina === 'papel'
+    else if (human === GAME_OPTIONS.PEDRA && maquina === GAME_OPTIONS.TESOURA ||
+        human === GAME_OPTIONS.PAPEL && maquina === GAME_OPTIONS.PEDRA ||
+        human === GAME_OPTIONS.TESOURA && maquina === GAME_OPTIONS.PAPEL
     ) {
         result.innerHTML = 'VOCÊ GANHOU!!!'
 
